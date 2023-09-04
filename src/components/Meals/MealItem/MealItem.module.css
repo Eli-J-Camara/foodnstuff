@@ -1,0 +1,23 @@
+.item {
+    border: 2px solid black;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 14px;
+    background-color: #8a2b06;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title__description {
+    width: 80%;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.title__description h2 {
+    margin-bottom: 0.5rem;
+}
