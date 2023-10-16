@@ -13,3 +13,7 @@ body {
   background-color: #3f3f3f;
 }
 
+:root {
+  --color-primary: rgb(186, 0, 0);
+  --color-variant: rgb(113, 18, 18);
+}

@@ -4,15 +4,13 @@ import CartContext from "./cart-context";
 
 const defaultCartState = {
   items: [],
-  totalAmount: 0,
+  totalPrice: 0,
 };
 
 function cartReducer(state, action) {
-//   Update the price when there are more than one of the same item on an individual item in the list.
   if (action.type === "ADD") {
-    const updatedTotalAmount =
-      state.totalAmount + action.item.price * action.item.amount;
-
+    const updatedTotalPrice =
+      state.totalPrice + action.item.price * action.item.amount;
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
     );
@@ -32,32 +30,39 @@ function cartReducer(state, action) {
 
     return {
       items: updatedItems,
-      totalAmount: updatedTotalAmount,
+      totalPrice: updatedTotalPrice,
     };
-  } 
-  if (action.type === 'REMOVE') {
+  }
+
+  if (action.type === "REMOVE") {
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.id
     );
     const existingItem = state.items[existingCartItemIndex];
-    const updatedTotalAmount = state.totalAmount - existingItem.price;
+    const updatedTotalPrice = state.totalPrice - existingItem.price;
     let updatedItems;
+
     if (existingItem.amount === 1) {
-      updatedItems = state.items.filter(item => item.id !== action.id)
+      updatedItems = state.items.filter((item) => item.id !== action.id);
     } else {
       const updatedItem = {
         ...existingItem,
-        amount: existingItem.amount - 1
+        amount: existingItem.amount - 1,
       };
       updatedItems = [...state.items];
-      updatedItems[existingCartItemIndex] = updatedItem
+      updatedItems[existingCartItemIndex] = updatedItem;
     }
 
     return {
-        items: updatedItems,
-        totalAmount: updatedTotalAmount,
+      items: updatedItems,
+      totalPrice: updatedTotalPrice,
     };
   }
+
+  if (action.type === "CLEAR") {
+    return defaultCartState;
+  }
+
   return defaultCartState;
 }
 
@@ -75,11 +80,16 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 
+  const clearCartHandler = () => {
+    dispatchCartAction({ type: "CLEAR" });
+  };
+
   const cartContext = {
     items: cartState.items,
-    totalAmount: cartState.totalAmount,
+    totalPrice: cartState.totalPrice,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
+    clearCart: clearCartHandler,
   };
 
   return (

@@ -1,0 +1,80 @@
+.checkout_form {
+    padding-left: 2.2rem;
+}
+
+.checkout_form label {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.checkout_form button{
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    color: var(--color-primary);
+    transition: all 0.3s ease-out;
+    margin-left: 193px;
+    margin-top: 0.5rem;
+}
+
+.checkout_form button:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.checkout_form button:disabled {
+    background-color: #ccc;
+    color: #292929;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
+.name_inputs input {
+    width: 15rem;
+    height: 2.5rem;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius:10px;
+    font-size: 1.25rem;
+}
+
+.info_inputs input {
+    width: 32.9rem;
+    height: 2.5rem;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius:10px;
+    font-size: 1.25rem;
+}
+
+.name_inputs {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 1.5rem;
+}
+
+.info_inputs {
+    margin-bottom: 1.5rem;
+}
+
+.error input {
+    background-color: rgb(234, 166, 141);
+    border-color: rgb(228, 0, 0);
+}
+
+.error input:focus {
+    outline: none;
+    background-color: rgb(253, 206, 161);
+    border: solid 2px rgb(225, 123, 22);
+}
+
+.error p {
+    color: rgb(228, 0, 0);
+    font-weight: bold;
+    margin: 0px;
+    position: absolute;
+}
