@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import MealsSummary from './MealsSummary';
 import AvailableMeals from './AvailableMeals';
 
-const Meals = () => {
+const Meals: React.FC = () => {
     return (
         <Fragment>
             <MealsSummary />
@@ -12,4 +12,4 @@ const Meals = () => {
     )
 }
 
-export default Meals
+export default Meals;
