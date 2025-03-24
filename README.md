@@ -48,6 +48,14 @@ Reducer functions are pure functions so we should therefore avoid using any asyn
 - Use regex to validate the email (go further than before with the validation on this input.)
 - For the phone number...
 
+# TypeScript Conversion
+I have run into issues of unsynced dependencies when trying to convert old projects to TypeScript. Before beginning the process of converting to TypeScript, make sure any out of date dependencies are updated.
+
+### Authentication
+- Add firebase authentication for users.
+- Add one to many relationship of users to meal orders.
+- Make unsubmitted form data persist through closing and reopening of the form.
+
 ## Notes
 
 1. The anonymous function that you pass to useEffect must not return a promise (meaning it cannot be asyncranous). Instead you can just nest an asyncranous function within that built-in useEffect function or call that asyncranous function from inside useEffect. Either way the functional call must be inside the useEffect call.
