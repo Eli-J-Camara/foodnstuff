@@ -50,6 +50,10 @@ Reducer functions are pure functions so we should therefore avoid using any asyn
 
 # TypeScript Conversion
 I have run into issues of unsynced dependencies when trying to convert old projects to TypeScript. Before beginning the process of converting to TypeScript, make sure any out of date dependencies are updated.
+1. Backup your javascript version by checking out a new branch.
+2. Delete the node_modules and package-lock.json file.
+3. Upgrade all JavaScript libraries
+4. Make sure the react, react-dom, and react-scripts libraries are at the latest version.
 
 ### Authentication
 - Add firebase authentication for users.
