@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
@@ -8,7 +8,11 @@ import CartContext from "../../store/cart-context";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { BsFillEmojiFrownFill } from "react-icons/bs";
 
-const Cart = (props) => {
+interface ToggleProps {
+  onHide: () => void;
+}
+
+const Cart = ({ onHide }: ToggleProps): React.ReactNode => {
   const [toggleCart, setToggleCart] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
@@ -33,9 +37,9 @@ const Cart = (props) => {
     context.addItem({ ...item, amount: 1 });
   };
 
-  let backNav = props.onHide;
+  let backNav = onHide;
   toggleCart && (backNav = backHandler);
-  didSubmit && (backNav = props.onHide);
+  didSubmit && (backNav = onHide);
 
   const serveOrderHandler = async (order) => {
     setIsSubmitting(true);
@@ -110,7 +114,7 @@ const Cart = (props) => {
   );
 
   return (
-    <Modal onBackdropClick={props.onHide}>
+    <Modal onBackdropClick={onHide}>
       <div className={classes.return} onClick={backNav}>
         <IoMdArrowRoundBack />
       </div>
