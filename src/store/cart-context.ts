@@ -1,14 +1,23 @@
 import React from 'react';
 
-// interface contextType {
-//     items: {id: string; name: string; amount: number; price: number;}[],
-//     totalAmount: number;
-//     addItem: (item: {})
-// }
+export interface CartItemType {
+    id: string;
+    name: string;
+    price: number;
+    amount: number;
+}
 
-const CartContext = React.createContext({
+export interface CartContextType {
+    items: CartItemType[];
+    totalPrice: number;
+    addItem: (item: CartItemType) => void;
+    removeItem: (id: string) => void;
+    clearCart: () => void;
+}
+
+const CartContext = React.createContext<CartContextType>({
     items: [],
-    totalAmount: 0,
+    totalPrice: 0,
     addItem: () => {},
     removeItem: (id: string) => {},
     clearCart: () => {},

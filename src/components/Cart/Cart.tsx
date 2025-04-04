@@ -4,7 +4,7 @@ import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 import Modal from "../UI/Modal";
-import CartContext from "../../store/cart-context";
+import CartContext, { CartItemType } from "../../store/cart-context";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { BsFillEmojiFrownFill } from "react-icons/bs";
 
@@ -29,11 +29,11 @@ const Cart = ({ onHide }: ToggleProps): React.ReactNode => {
   const totalPrice = `$${context.totalPrice.toFixed(2)}`;
   const hasItems = context.items.length > 0;
 
-  const cartItemRemoveHandler = (id) => {
+  const cartItemRemoveHandler = (id: string) => {
     context.removeItem(id);
   };
 
-  const cartItemAddHandler = (item) => {
+  const cartItemAddHandler = (item: CartItemType) => {
     context.addItem({ ...item, amount: 1 });
   };
 

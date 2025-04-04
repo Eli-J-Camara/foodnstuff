@@ -1,25 +1,18 @@
 import { useReducer, PropsWithChildren } from "react";
 
-import CartContext from "./cart-context";
+import CartContext, { CartContextType, CartItemType } from "./cart-context";
 
 const defaultCartState = {
   items: [],
   totalPrice: 0,
 };
 
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  amount: number;
-}
-
 interface CartState {
-  items: CartItem[];
+  items: CartItemType[];
   totalPrice: number;
 }
 
-type cartAction = { type: "ADD"; item: CartItem } | { type: "REMOVE"; id: string; } | { type: "CLEAR" }
+type cartAction = { type: "ADD"; item: CartItemType } | { type: "REMOVE"; id: string; } | { type: "CLEAR" }
 
 function cartReducer(state: CartState, action: cartAction): CartState {
   if (action.type === "ADD") {
@@ -85,7 +78,7 @@ const CartProvider = (props: PropsWithChildren) => {
     defaultCartState
   );
 
-  const addItemToCartHandler = (item: CartItem) => {
+  const addItemToCartHandler = (item: CartItemType) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
 
@@ -97,7 +90,7 @@ const CartProvider = (props: PropsWithChildren) => {
     dispatchCartAction({ type: "CLEAR" });
   };
 
-  const cartContext = {
+  const cartContext: CartContextType = {
     items: cartState.items,
     totalPrice: cartState.totalPrice,
     addItem: addItemToCartHandler,
