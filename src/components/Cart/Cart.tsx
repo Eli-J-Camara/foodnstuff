@@ -41,7 +41,18 @@ const Cart = ({ onHide }: ToggleProps): React.ReactNode => {
   toggleCart && (backNav = backHandler);
   didSubmit && (backNav = onHide);
 
-  const serveOrderHandler = async (order) => {
+  interface orderType {
+    user: {
+      firstName: string;
+      lastName: string;
+      address: string;
+      phoneNumber: string;
+    };
+    cartItems: CartItemType[];
+    totalPrice: string;
+  }
+
+  const serveOrderHandler = async (order: orderType) => {
     setIsSubmitting(true);
     await fetch(
       "https://foodnstuff-1aa70-default-rtdb.firebaseio.com/customer_orders.json",

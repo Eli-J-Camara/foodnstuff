@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import classes from "./Checkout.module.css";
-import CartContext from "../../store/cart-context";
+import CartContext, { CartItemType } from "../../store/cart-context";
 import useValidation from "../../hooks/use-validation";
 
 const emptyCheck = (value) => value.trim() !== "";
@@ -62,7 +62,7 @@ const Checkout = (props) => {
       phoneNumber: phoneNumber,
     };
 
-    const customerOrder = {
+    const customerOrder: customerOrderType = {
       user: userData,
       cartItems: context.items,
       totalPrice: context.totalPrice.toFixed(2),

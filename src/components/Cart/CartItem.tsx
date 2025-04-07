@@ -1,6 +1,16 @@
 import classes from './CartItem.module.css';
 
-const CartItem = (props) => {
+import { CartItemType } from '../../store/cart-context';
+
+interface CartItemDetailsType {
+  key: string;
+  name: string;
+  amount: number;
+  price: number;
+  onRemove: () => void;
+  onAdd: () => void;
+}
+const CartItem = (props: CartItemDetailsType) => {
   const price = `$${props.price.toFixed(2)}`;
 
   return (

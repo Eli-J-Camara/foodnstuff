@@ -3,6 +3,8 @@
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "checkJs": true,             // Enables type checking for JS files
+    "noEmit": true,              // ✅ Prevents emitting output (optional for dev-only)
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
