@@ -1,8 +1,12 @@
-import React from 'react';
+import { PropsWithChildren } from 'react';
 
 import classes from './Card.module.css';
 
-const Card = props => {
+interface CardPropsType extends PropsWithChildren {
+    className?: string;
+}
+
+const Card = (props: CardPropsType) => {
     return (
         <div className={`${classes.card} ${props.className}`}>
             {props.children}

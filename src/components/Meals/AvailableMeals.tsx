@@ -4,9 +4,16 @@ import classes from "./AvailableMeals.module.css";
 import MealItem from "./MealItem/MealItem";
 import Card from "../UI/Card";
 
+export interface dummyMealType {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+}
+
 const AvailableMeals = () => {
-  const [dummyMeals, setDummyMeals] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [dummyMeals, setDummyMeals] = useState<dummyMealType[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState(null);
 
   const fetchMeals = async () => {

@@ -12,6 +12,17 @@ interface ToggleProps {
   onHide: () => void;
 }
 
+export interface orderType {
+  user: {
+    firstName: string;
+    lastName: string;
+    address: string;
+    phoneNumber: string;
+  };
+  cartItems: CartItemType[];
+  totalPrice: string;
+}
+
 const Cart = ({ onHide }: ToggleProps): React.ReactNode => {
   const [toggleCart, setToggleCart] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,16 +52,7 @@ const Cart = ({ onHide }: ToggleProps): React.ReactNode => {
   toggleCart && (backNav = backHandler);
   didSubmit && (backNav = onHide);
 
-  interface orderType {
-    user: {
-      firstName: string;
-      lastName: string;
-      address: string;
-      phoneNumber: string;
-    };
-    cartItems: CartItemType[];
-    totalPrice: string;
-  }
+  
 
   const serveOrderHandler = async (order: orderType) => {
     setIsSubmitting(true);

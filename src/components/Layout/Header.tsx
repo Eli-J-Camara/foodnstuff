@@ -1,14 +1,14 @@
 import { Fragment } from 'react';
-import mealsIMG from '../../assets/meals.jpg';
+import mealsIMG from '../../assets/meals.jpg'
 import classes from './Header.module.css';
 import HeaderCartButton from './HeaderCartButton';
 
-const Header = props => {
+const Header = (props: { onReveal: () => void }) => {
     return (
         <Fragment>
             <header className={classes.header}>
                 <h1>Food n' Stuff</h1>
-                <HeaderCartButton onClick={props.onReveal} />
+                <HeaderCartButton reveal={props.onReveal} />
             </header>
             <div className={classes['main-image']}>
                 <img src={mealsIMG} alt='Meals Image' />

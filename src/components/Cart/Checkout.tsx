@@ -1,11 +1,16 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import classes from "./Checkout.module.css";
 import CartContext, { CartItemType } from "../../store/cart-context";
 import useValidation from "../../hooks/use-validation";
+import { orderType } from "./Cart";
 
-const emptyCheck = (value) => value.trim() !== "";
+const emptyCheck = (value: string) => value.trim() !== "";
 
-const Checkout = (props) => {
+type CheckoutPropType = {
+  onSubmission: (order: orderType) => void;
+}
+
+const Checkout = ({ onSubmission }: CheckoutPropType) => {
   const {
     value: firstName,
     valueIsValid: firstNameIsValid,
@@ -40,7 +45,7 @@ const Checkout = (props) => {
     inputValueHandler: updatePhoneHandler,
     inputFocusHandler: phoneNumberFocusHandler,
     inputReset: phoneNumberReset,
-  } = useValidation((phoneNumber) => {
+  } = useValidation((phoneNumber: string) => {
     const phoneNumValid = new RegExp(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/);
     return phoneNumValid.test(phoneNumber.trim());
   });
@@ -52,7 +57,7 @@ const Checkout = (props) => {
 
   const context = useContext(CartContext);
 
-  const submitHandler = (event) => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const userData = {
@@ -62,13 +67,13 @@ const Checkout = (props) => {
       phoneNumber: phoneNumber,
     };
 
-    const customerOrder: customerOrderType = {
+    const customerOrder = {
       user: userData,
       cartItems: context.items,
       totalPrice: context.totalPrice.toFixed(2),
     };
 
-    props.onSubmission(customerOrder);
+    onSubmission(customerOrder);
 
     firstNameReset();
     lastNameReset();
