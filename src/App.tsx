@@ -5,7 +5,7 @@ import Meals from './components/Meals/meals';
 import Cart from './components/Cart/Cart';
 import CartProvider from './store/CartProvider';
 
-function App(): React.ReactNode  {
+function App() {
   const [cartIsShown, setCartIsShown] = useState<boolean>(false);
 
   const showCartHandler = (): void => {

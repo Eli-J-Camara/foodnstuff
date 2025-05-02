@@ -5,6 +5,7 @@ import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 import Modal from "../UI/Modal";
 import CartContext, { CartItemType } from "../../store/cart-context";
+import Icons from '../UI/Icons';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { BsFillEmojiFrownFill } from "react-icons/bs";
 
@@ -23,7 +24,7 @@ export interface orderType {
   totalPrice: string;
 }
 
-const Cart = ({ onHide }: ToggleProps): React.ReactNode => {
+const Cart = ({ onHide }: ToggleProps) => {
   const [toggleCart, setToggleCart] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
@@ -97,7 +98,7 @@ const Cart = ({ onHide }: ToggleProps): React.ReactNode => {
       ) : (
         <div className={classes.actions}>
           <p className={classes.cart_empty_msg}>
-            There are no items in your cart. <BsFillEmojiFrownFill />
+            There are no items in your cart. <Icons icon={BsFillEmojiFrownFill} />
           </p>
         </div>
       )}
@@ -129,7 +130,7 @@ const Cart = ({ onHide }: ToggleProps): React.ReactNode => {
   return (
     <Modal onBackdropClick={onHide}>
       <div className={classes.return} onClick={backNav}>
-        <IoMdArrowRoundBack />
+        <Icons icon={IoMdArrowRoundBack} />
       </div>
       {!didSubmit && (
         <div className={classes.total}>
